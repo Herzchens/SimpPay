@@ -1,56 +1,60 @@
 Simp Pay [![Discord](https://img.shields.io/discord/1353293624238145626.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.typicalsmc.me/discord) ![Supported server version](https://img.shields.io/badge/minecraft-1.13%20--_1.21.4-green)
 ===========
+Language: [Vietnamese](README_VN.md), **[English](README.md)** <br><br>
+Automated QR payment and prepaid mobile card recharge solution for Vietnamese Minecraft Servers <br> <br>
+**Supported payment gateways:** [thesieutoc](https://thesieutoc.net/), [payos](https://payos.vn/)
 
-Giải pháp thanh toán QR và thẻ cào tự động cho Server Minecraft Việt Nam
-**Các loại cổng nạp đang hỗ trợ:** [thesieutoc](https://thesieutoc.net/), [payos](https://payos.vn/)
+![Bstats](https://bstats.org/signatures/bukkit/SimpPay.svg)
 
-Tính năng hiện có
+Current Features
 ===========
 
-- Nạp thẻ tự động
-- Gần như tất cả đều có thể tùy chỉnh qua config
-- Phần thưởng theo mốc nạp
-- Lệnh nạp nhanh với auto-complete
-- Mốc nạp theo ngày/tuần/tháng/năm
-- Giao diện dành cho Bedrock / GeyserMC
-- Xem lại lịch sử nạp của người chơi
+- Automatic card recharge
+- Almost everything can be customized via config
+- Rewards based on recharge milestones
+- Quick recharge commands with auto-complete
+- Recharge milestones by day/week/month/year
+- Interface for Bedrock / GeyserMC
+- View player recharge history
 
-Hướng dẫn sử dụng
+Usage Guide
 ===========
 
-**Cài đặt plugin:**
+**Plugin Installation:**
 
-- Plugin cần
-  có [floodgate](https://geysermc.org/download?project=floodgate), [PlayerPoints](https://www.spigotmc.org/resources/playerpoints.80745/)
-  và [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245/) để hoạt động
-- Tải plugin [tại đây](https://discord.gg/cQ67TzhsQF), và để vào thư mục `plugins`
+- The plugin requires
+  [PlayerPoints](https://www.spigotmc.org/resources/playerpoints.80745/)
+  and [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245/) to function
+- Download the plugin [here](https://github.com/SimpMC-Studio/SimpPay/releases/), and place it in the `plugins` folder
+- You need to install floodgate to use the card recharge interface for Bedrock players, download it [here](https://geysermc.org/download?project=floodgate)
 
-**Danh sách lệnh:**
+**Command List:**
 
-| Lệnh                        | Chức năng                               | Permission                |
+| Command                     | Function                                | Permission                |
 |-----------------------------|-----------------------------------------|---------------------------|
-| /napthe                     | Mở menu nạp thẻ                         | simppay.napthe            |
-| /simppayadmin lichsu        | Xem lịch sử nạp toàn server             | simppay.admin.viewhistory |
-| /simppayadmin lichsu <name> | Xem lịch sử nạp của người chơi chỉ định | simppay.admin.viewhistory |
-| /lichsunapthe               | Xem lịch sử nạp                         | simppay.lichsunapthe      |
-| /bank <số tiền>             | Nạp ngân hàng qua mã QR                 | simppay.banking           |
+| /napthe                     | Open recharge card menu                 | simppay.napthe            |
+| /simppayadmin lichsu        | View server-wide recharge history       | simppay.admin.viewhistory |
+| /simppayadmin lichsu <name> | View recharge history of specific player| simppay.admin.viewhistory |
+| /lichsunapthe               | View recharge history                   | simppay.lichsunapthe      |
+| /bank <amount>              | Bank deposit via QR code                | simppay.banking           |
 
-**Placeholder:**
+**Placeholders:**
 
-Placeholder có thể sử dụng để hiển thị top nạp bằng cách sử
-dụng [ajLeaderboards](https://www.spigotmc.org/resources/ajleaderboards.85548/)
+Placeholders can be used to display top rechargers using
+[ajLeaderboards](https://www.spigotmc.org/resources/ajleaderboards.85548/) or [topper](https://www.spigotmc.org/resources/topper.101325/)
 
-| Placeholder                      | Chức năng                                    | Ghi chú |
-|----------------------------------|----------------------------------------------|---------|
-| %simppay_total%                  | Trả về tổng nạp của người chơi đó            |         |
-| %simppay_server_total%           | Trả về tổng nạp toàn server                  |         |
-| %simppay_server_total_formatted% | Trả về số tiền nạp toàn server dạng xxx.xxxđ |         |
-| %simppay_bank_total_formatted%   | Trả về số tiền nạp ngân hàng dạng xxx.xxxđ   |         |
-| %simppay_card_total_formatted%   | Trả về số tiền nạp thẻ dạng xxx.xxxđ         |         |
+| Placeholder                      | Function                                             | Notes |
+|----------------------------------|------------------------------------------------------|-------|
+| %simppay_total%                  | Returns total recharge of that player                |       |
+| %simppay_total_formatted%        | Returns player's recharge amount in xxx.xxxđ format  |       |
+| %simppay_server_total%           | Returns total server recharge                        |       |
+| %simppay_server_total_formatted% | Returns server recharge amount in xxx.xxxđ format    |       |
+| %simppay_bank_total_formatted%   | Returns bank recharge amount in xxx.xxxđ format      |       |
+| %simppay_card_total_formatted%   | Returns card recharge amount in xxx.xxxđ format      |       |
 
-**Config plugin:**
+**Plugin Configuration:**
 
-Cấu trúc thư mục `./plugins/SimpPay` như sau
+The directory structure of `./plugins/SimpPay` is as follows
 
 ```
 SimpPay
@@ -84,8 +88,10 @@ SimpPay
         server-payment-history-menu-config.yml
 ```
 
-- Bạn có thể config giao diện tại các file trong thư mục `menus`
-- Để thêm API Key cho các dịch vụ tương ứng, hãy thêm tại các file trong thư mục `banking` và `card`
-- Cài đặt chung của plugin được đặt tại `config.yml`, các message đặt tại `messages.yml`
-- Cài đặt mốc nạp tích luỹ tại `moc-nap-config.yml` và `moc-nap-server-config.yml`
-- Cài đặt lệnh nạp lần đầu tại `naplandau-config.yml`
+- You can configure the interface in the files within the `menus` directory
+- To add API Keys for corresponding services, add them in the files within the `banking` and `card` directories
+- General plugin settings are in `main-config.yml`, messages are in `message-config.yml`
+- Configure cumulative recharge milestones in `moc-nap-config.yml` and `moc-nap-server-config.yml`
+- Configure first-time recharge commands in `naplandau-config.yml`
+
+[![Powered by DartNode](https://dartnode.com/branding/DN-Open-Source-sm.png)](https://dartnode.com "Powered by DartNode - Free VPS for Open Source")

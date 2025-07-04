@@ -2,7 +2,6 @@ package org.simpmc.simppay.menu.card.anvil;
 
 import lombok.Getter;
 import net.kyori.adventure.text.serializer.json.JSONComponentSerializer;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.wesjd.anvilgui.AnvilGUI;
 import org.bukkit.entity.Player;
 import org.simpmc.simppay.SPPlugin;
@@ -13,10 +12,12 @@ import org.simpmc.simppay.util.MessageUtil;
 
 import java.util.Arrays;
 import java.util.Collections;
+
 @Getter
 public class CardSerialInput {
     private final Object initialData;
     private final Player player;
+
     public CardSerialInput(Player p, Object initialData) {
         this.initialData = initialData;
         this.player = p;

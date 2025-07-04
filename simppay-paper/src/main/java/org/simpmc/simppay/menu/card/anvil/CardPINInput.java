@@ -2,14 +2,12 @@ package org.simpmc.simppay.menu.card.anvil;
 
 import lombok.Getter;
 import net.kyori.adventure.text.serializer.json.JSONComponentSerializer;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.wesjd.anvilgui.AnvilGUI;
 import org.bukkit.entity.Player;
 import org.simpmc.simppay.SPPlugin;
 import org.simpmc.simppay.config.ConfigManager;
 import org.simpmc.simppay.config.types.MessageConfig;
 import org.simpmc.simppay.config.types.menu.card.anvil.CardPinMenuConfig;
-import org.simpmc.simppay.config.types.menu.card.anvil.CardSerialMenuConfig;
 import org.simpmc.simppay.data.PaymentStatus;
 import org.simpmc.simppay.model.Payment;
 import org.simpmc.simppay.model.detail.CardDetail;
@@ -24,6 +22,7 @@ import java.util.UUID;
 public class CardPINInput {
     private final Object initialData;
     private final Player player;
+
     public CardPINInput(Player p, Object initialData) {
         this.initialData = initialData;
         this.player = p;

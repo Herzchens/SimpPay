@@ -126,14 +126,14 @@ public class TSTHandler implements PaymentHandler, CardAdapter {
         if (paymentStatus == PaymentStatus.SUCCESS) {
             return new PaymentResult(
                     PaymentStatus.SUCCESS,
-                    json.get("amount").getAsInt(),
+                    (int) card.getAmount(),
                     json.get("msg").getAsString()
             );
         }
         if (paymentStatus == PaymentStatus.FAILED) {
             return new PaymentResult(
                     PaymentStatus.FAILED,
-                    json.get("amount").getAsInt(),
+                    (int) card.getAmount(),
                     json.get("msg").getAsString()
             );
         }
